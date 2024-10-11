@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             L_UserName = new Label();
             L_Password = new Label();
             L_TimeToBook = new Label();
@@ -108,9 +109,9 @@
             // 
             // BT_Book
             // 
-            BT_Book.Location = new Point(274, 340);
+            BT_Book.Location = new Point(193, 306);
             BT_Book.Name = "BT_Book";
-            BT_Book.Size = new Size(94, 29);
+            BT_Book.Size = new Size(169, 113);
             BT_Book.TabIndex = 8;
             BT_Book.Text = "Book";
             BT_Book.UseVisualStyleBackColor = true;
@@ -130,6 +131,9 @@
             Controls.Add(L_TimeToBook);
             Controls.Add(L_Password);
             Controls.Add(L_UserName);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Form1";
             Text = "Tanto Bastu AutoBokare";
             Load += Form1_Load;
