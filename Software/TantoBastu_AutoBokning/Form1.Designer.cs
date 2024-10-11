@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             L_UserName = new Label();
             L_Password = new Label();
@@ -38,6 +39,7 @@
             DT_BookingDatePicker = new DateTimePicker();
             L_Date = new Label();
             BT_Book = new Button();
+            Timer_PollingIntervall = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // L_UserName
@@ -117,6 +119,11 @@
             BT_Book.UseVisualStyleBackColor = true;
             BT_Book.Click += BT_Book_Click;
             // 
+            // Timer_PollingIntervall
+            // 
+            Timer_PollingIntervall.Interval = 60000;
+            Timer_PollingIntervall.Tick += Timer_PollingIntervall_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -152,5 +159,6 @@
         private DateTimePicker DT_BookingDatePicker;
         private Label L_Date;
         private Button BT_Book;
+        private System.Windows.Forms.Timer Timer_PollingIntervall;
     }
 }

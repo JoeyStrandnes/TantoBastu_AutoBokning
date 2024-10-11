@@ -1,10 +1,13 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Net.Mail;
+
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using TantoBastu_AutoBokning.Properties;
+using System.Net;
 
 namespace TantoBastu_AutoBokning
 {
@@ -41,8 +44,6 @@ namespace TantoBastu_AutoBokning
 
             int NumberOfExtraBookings = 0;
 
-            return;
-
             IWebDriver WebDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
             WebDriverWait Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(20));
 
@@ -58,10 +59,23 @@ namespace TantoBastu_AutoBokning
 
             //Wait for the new page to load.
             System.Threading.Thread.Sleep(500);
-            IWebElement MessageButton = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton"));
-            Wait.Until(d => MessageButton.Displayed);
 
-            MessageButton.Click(); //Close the messages pop up.
+
+            try //Wait for the login, will timeout or through an exception if the credentials were incorrect.
+            {
+                IWebElement MessageButton = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton"));
+                Wait.Until(d => MessageButton.Displayed);
+                MessageButton.Click(); //Close the messages pop up.
+            }
+            catch
+            {
+                MessageBox.Show("Wrong username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Debug.WriteLine("Wrong username or password. Try again.");
+                WebDriver.Quit();
+
+                return;
+            }
+
 
             Program.BusyWaitForLoading(WebDriver, Wait); //Wait for the loading pop up to finish.
 
@@ -95,11 +109,13 @@ namespace TantoBastu_AutoBokning
                 System.Diagnostics.Debug.WriteLine(NumberOfBookings + " Bookings");
 
 
-                if (NumberOfBookings < 11) //TBD what the max number of bookings is.
+                if (NumberOfBookings < 11/* && RegularTime.Background*/) //TBD what the max number of bookings is.
                 {
 
                     //Book the time.
                     RegularTime.Click();
+
+                    Program.BusyWaitForLoading(WebDriver, Wait);
 
                     //Read the text from the pop up to check if the booking was successfull!
                     IWebElement ConfirmationPopUp = WebDriver.FindElement(OpenQA.Selenium.By.ClassName("gwt-DialogBox"));
@@ -109,9 +125,6 @@ namespace TantoBastu_AutoBokning
 
                     ConfirmationPopUp.FindElement(OpenQA.Selenium.By.TagName("button")).Click(); //Close the pop up
 
-
-                    //WebDriver.FindElement(By.XPath($"//div[contains(@class, 'gwt-Button standardButton')]//button[starts-with(@id, 'gwt-debug-okButton')")).Click();
-
                     //Open the pop up again to see a list of the other people who booked the same time.
                     RegularTime.Click();
                     System.Threading.Thread.Sleep(500); //Temporary
@@ -120,21 +133,26 @@ namespace TantoBastu_AutoBokning
                     while (NumberOfExtraBookings > 0)
                     {
                         WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-bookAnotherResourceButton")).Click();
+                        Program.BusyWaitForLoading(WebDriver, Wait);
+                        
+                        ConfirmationPopUp.FindElement(OpenQA.Selenium.By.TagName("button")).Click(); //Close the pop up
+                        RegularTime.Click();
+
                         NumberOfExtraBookings--;
 
                     }
 
-
+                    String EmailBody = "Värd: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text + "\n";
 
                     var ListOfPeople = WebDriver.FindElements(OpenQA.Selenium.By.Id("gwt-debug-StackForm.headLine"));
 
                     foreach (var people in ListOfPeople)
                     {
-
                         System.Diagnostics.Debug.WriteLine(people.Text);
-
+                        EmailBody += people.Text + "\n";
                     }
 
+                    //Todo send an email when the booking is complete with information of the booking.
 
                 }
 
@@ -144,15 +162,22 @@ namespace TantoBastu_AutoBokning
             else //Keep polling the server to wait if someone will host. 
             {
                 System.Diagnostics.Debug.WriteLine(Host.Text);
+
+                Timer_PollingIntervall.Start();
+
             }
 
 
             WebDriver.Quit();
 
 
+            return;
 
 
+        }
 
+        private void Timer_PollingIntervall_Tick(object sender, EventArgs e)
+        {
 
         }
     }
