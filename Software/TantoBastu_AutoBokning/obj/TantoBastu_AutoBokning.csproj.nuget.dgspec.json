@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj": {}
+    "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj": {
+    "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
+        "projectUniqueName": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
         "projectName": "TantoBastu_AutoBokning",
-        "projectPath": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
-        "packagesPath": "C:\\Users\\Joey.Strandnes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\obj\\",
+        "projectPath": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
+        "packagesPath": "C:\\Users\\Joseph Strandnes\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "D:\\Programming_Enviroments\\VisualStudio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joey.Strandnes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Joseph Strandnes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -53,6 +53,14 @@
               "target": "Package",
               "version": "[3.11.0, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.8.0, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.25.0, )"
+            },
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[4.25.0, )"
@@ -77,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
