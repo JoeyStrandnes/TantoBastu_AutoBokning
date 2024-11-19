@@ -371,23 +371,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joseph Strandnes\\.nuget\\packages\\": {},
-    "D:\\Programming_Enviroments\\VisualStudio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Joey.Strandnes\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
+      "projectUniqueName": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
       "projectName": "TantoBastu_AutoBokning",
-      "projectPath": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
-      "packagesPath": "C:\\Users\\Joseph Strandnes\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\obj\\",
+      "projectPath": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
+      "packagesPath": "C:\\Users\\Joey.Strandnes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Programming_Enviroments\\VisualStudio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Joseph Strandnes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Joey.Strandnes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

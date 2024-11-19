@@ -79,5 +79,13 @@ namespace TantoBastu_AutoBokning
             return;
 
         }
+
+        private void BT_EmailSettings_Click(object sender, EventArgs e)
+        {
+            EmailForm Form = new EmailForm();
+            Form.ShowDialog();
+
+            return;
+        }
     }
 }

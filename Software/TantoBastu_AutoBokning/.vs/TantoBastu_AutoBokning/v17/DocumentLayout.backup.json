@@ -1,26 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\",
+  "WorkspaceRootPath": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|d:\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|c:\\users\\joey.strandnes\\documents\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\emailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:emailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|d:\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|c:\\users\\joey.strandnes\\documents\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\emailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:emailform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|d:\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
-      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
+      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|c:\\users\\joey.strandnes\\documents\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|d:\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\tantobastu_autobokning.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:tantobastu_autobokning.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|c:\\users\\joey.strandnes\\documents\\github\\tantobastu_autobokning\\software\\tantobastu_autobokning\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}",
+      "RelativeMoniker": "D:0:0:{483B0C95-7069-4B48-A41A-0855D130E5B1}|TantoBastu_AutoBokning.csproj|solutionrelative:properties\\settings.settings||{6D2695F9-5365-4A78-89ED-F205C045BFE6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,15 +34,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T15:13:51.469Z",
@@ -47,13 +51,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Form1.cs",
-              "DocumentMoniker": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs",
+              "ToolTip": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAiwFUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T15:15:58.678Z",
               "IsPinned": true,
@@ -61,13 +65,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Program.cs",
+              "ToolTip": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAIwJkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANkAAAAAAAAAAAAkwPAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T15:16:04.933Z",
               "IsPinned": true,
@@ -75,27 +79,62 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Settings.settings",
-              "DocumentMoniker": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Properties\\Settings.settings",
-              "RelativeDocumentMoniker": "Properties\\Settings.settings",
-              "ToolTip": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Properties\\Settings.settings",
-              "RelativeToolTip": "Properties\\Settings.settings",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002767|",
-              "WhenOpened": "2024-10-11T08:36:50.605Z",
+              "DocumentIndex": 1,
+              "Title": "EmailForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\EmailForm.cs",
+              "RelativeDocumentMoniker": "EmailForm.cs",
+              "ToolTip": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\EmailForm.cs [Design]",
+              "RelativeToolTip": "EmailForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T16:11:05.965Z",
+              "IsPinned": true,
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "2fe8abff-6662-46cb-a46f-967a492f15d0",
+        "Display": 2,
+        "X": -142,
+        "Y": 320,
+        "Width": 1654,
+        "Height": 1062,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmailForm.cs",
+              "DocumentMoniker": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\EmailForm.cs",
+              "RelativeDocumentMoniker": "EmailForm.cs",
+              "ToolTip": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\EmailForm.cs",
+              "RelativeToolTip": "EmailForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T16:26:27.724Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TantoBastu_AutoBokning",
-              "DocumentMoniker": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
-              "RelativeDocumentMoniker": "TantoBastu_AutoBokning.csproj",
-              "ToolTip": "D:\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\TantoBastu_AutoBokning.csproj",
-              "RelativeToolTip": "TantoBastu_AutoBokning.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-11T08:36:39.375Z",
+              "DocumentIndex": 5,
+              "Title": "Settings.settings",
+              "DocumentMoniker": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Properties\\Settings.settings",
+              "RelativeDocumentMoniker": "Properties\\Settings.settings",
+              "ToolTip": "C:\\Users\\Joey.Strandnes\\Documents\\GitHub\\TantoBastu_AutoBokning\\Software\\TantoBastu_AutoBokning\\Properties\\Settings.settings",
+              "RelativeToolTip": "Properties\\Settings.settings",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002767|",
+              "WhenOpened": "2024-10-11T08:36:50.605Z",
               "EditorCaption": ""
             }
           ]

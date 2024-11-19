@@ -60,9 +60,17 @@ namespace TantoBastu_AutoBokning
 
         public static Program.ErrorCodes BookSaunaTime(string day, string booking_time) //Return error code:
         {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--headless");
+            chromeOptions.AddArgument("--start-minimized");
+            //chromeOptions.AddArgument("--window-position=-2400,-2400"); //Chrome verison is bugged.
 
-            IWebDriver WebDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
-            WebDriverWait Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(20));
+            //Setup the Chrome driver without the terminal window
+            ChromeDriverService DriverService = ChromeDriverService.CreateDefaultService();
+            DriverService.HideCommandPromptWindow = true;
+
+            IWebDriver WebDriver = new OpenQA.Selenium.Chrome.ChromeDriver(DriverService, chromeOptions);
+            WebDriverWait Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(60));
 
             WebDriver.Navigate().GoToUrl("http://tbas.lasborgen.se:8000/");
 
@@ -95,6 +103,44 @@ namespace TantoBastu_AutoBokning
 
 
             Program.BusyWaitForLoading(WebDriver, Wait); //Wait for the loading pop up to finish.
+
+
+            //Check what language is used in the browser. Should be Swedish by default but you never know.
+            //This is used for the month selector since it is only searchable by the month name!
+            WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-languageSelection")).Click();
+            String BrowserLang = Regex.Replace(WebDriver.FindElement(OpenQA.Selenium.By.ClassName("dialogTopCenterInner")).Text, @"^.*? - ", "");
+            WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton")).Click();
+
+            System.Globalization.CultureInfo ThreadLang;
+
+            switch (BrowserLang)
+            {
+                case ("English"):
+                    ThreadLang = new System.Globalization.CultureInfo("es-ES");
+                    break;
+                case ("Svenska"):
+                    ThreadLang = new System.Globalization.CultureInfo("sv-SV");
+                    break;
+                case ("Norks"):
+                    ThreadLang = new System.Globalization.CultureInfo("nn-NN");
+                    break;
+                case ("Danks"):
+                    ThreadLang = new System.Globalization.CultureInfo("da-DA");
+                    break;
+                default:
+                    ThreadLang = new System.Globalization.CultureInfo("sv-SV");
+                    break;
+
+
+            }
+
+            System.Threading.Thread.CurrentThread.CurrentCulture = ThreadLang;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ThreadLang;
+
+
+            //TODO Fetch the month name from the "date time picker" after the langauge has been set 
+
+
 
             //Select the day to book.
             WebDriver.FindElement(OpenQA.Selenium.By.Id($"gwt-debug-dayBoxButton{day}")).Click(); //Click on the day to book.
@@ -159,36 +205,39 @@ namespace TantoBastu_AutoBokning
 
                     }
 
-                    String EmailBody = "Värd: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text + "\n";
-
-                    var ListOfPeople = WebDriver.FindElements(OpenQA.Selenium.By.Id("gwt-debug-StackForm.headLine"));
-
-                    foreach (var people in ListOfPeople)
+                    if (Properties.Settings.Default.SendEmailAfterBooking == true)
                     {
-                        System.Diagnostics.Debug.WriteLine(people.Text);
-                        EmailBody += people.Text + "\n";
-                    }
+                        String EmailBody = "Värd: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text + "\n";
 
-                    //Todo send an email when the booking is complete with information of the booking.
-                    MimeMessage Email = new MimeMessage();
-                    Email.From.Add(new MailboxAddress("BastuBokaren", "bastu@bastu.se"));
+                        var ListOfPeople = WebDriver.FindElements(OpenQA.Selenium.By.Id("gwt-debug-StackForm.headLine"));
 
-                    String[] UserNameSplit = Program.UserName.Split('.');
-                    String Name = char.ToUpper(UserNameSplit[0][0]) + UserNameSplit[0].Substring(1) + char.ToUpper(UserNameSplit[1][0]) + UserNameSplit[1].Substring(1);
+                        foreach (var people in ListOfPeople)
+                        {
+                            System.Diagnostics.Debug.WriteLine(people.Text);
+                            EmailBody += people.Text + "\n";
+                        }
 
-                    Email.To.Add(new MailboxAddress(Name, "bastu@bastu.se"));
-                    Email.Subject = "Bastun är bokad";
-                    Email.Body = new TextPart("plain")
-                    {
-                        Text = EmailBody
-                    };
+                        //Todo send an email when the booking is complete with information of the booking.
+                        MimeMessage Email = new MimeMessage();
+                        Email.From.Add(new MailboxAddress("BastuBokaren", Properties.Settings.Default.ServerEmail));
 
-                    using (MailKit.Net.Smtp.SmtpClient SMTP = new MailKit.Net.Smtp.SmtpClient())
-                    {
-                        SMTP.Connect("send.one.com", 465, true);
-                        SMTP.Authenticate("bastu@bastu.se", "Bastu1234");
-                        SMTP.Send(Email);
-                        SMTP.Disconnect(true);
+                        String[] UserNameSplit = Program.UserName.Split('.');
+                        String Name = char.ToUpper(UserNameSplit[0][0]) + UserNameSplit[0].Substring(1) + char.ToUpper(UserNameSplit[1][0]) + UserNameSplit[1].Substring(1);
+
+                        Email.To.Add(new MailboxAddress(Name, Properties.Settings.Default.Email));
+                        Email.Subject = "Bastun är bokad";
+                        Email.Body = new TextPart("plain")
+                        {
+                            Text = EmailBody
+                        };
+
+                        using (MailKit.Net.Smtp.SmtpClient SMTP = new MailKit.Net.Smtp.SmtpClient())
+                        {
+                            SMTP.Connect(Properties.Settings.Default.ServerAddress, Properties.Settings.Default.ServerPort, true);
+                            SMTP.Authenticate(Properties.Settings.Default.ServerEmail, Properties.Settings.Default.ServerEmailPassword);
+                            SMTP.Send(Email);
+                            SMTP.Disconnect(true);
+                        }
                     }
 
                 }

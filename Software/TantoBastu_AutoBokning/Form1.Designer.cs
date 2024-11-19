@@ -40,32 +40,33 @@
             L_Date = new Label();
             BT_Book = new Button();
             Timer_PollingIntervall = new System.Windows.Forms.Timer(components);
+            BT_EmailSettings = new Button();
             SuspendLayout();
             // 
             // L_UserName
             // 
             L_UserName.AutoSize = true;
-            L_UserName.Location = new Point(63, 75);
+            L_UserName.Location = new Point(72, 100);
             L_UserName.Name = "L_UserName";
-            L_UserName.Size = new Size(89, 15);
+            L_UserName.Size = new Size(109, 20);
             L_UserName.TabIndex = 0;
             L_UserName.Text = "Användarnamn";
             // 
             // L_Password
             // 
             L_Password.AutoSize = true;
-            L_Password.Location = new Point(88, 102);
+            L_Password.Location = new Point(101, 136);
             L_Password.Name = "L_Password";
-            L_Password.Size = new Size(56, 15);
+            L_Password.Size = new Size(70, 20);
             L_Password.TabIndex = 1;
             L_Password.Text = "Lösenord";
             // 
             // L_TimeToBook
             // 
             L_TimeToBook.AutoSize = true;
-            L_TimeToBook.Location = new Point(88, 149);
+            L_TimeToBook.Location = new Point(101, 199);
             L_TimeToBook.Name = "L_TimeToBook";
-            L_TimeToBook.Size = new Size(70, 15);
+            L_TimeToBook.Size = new Size(87, 20);
             L_TimeToBook.TabIndex = 2;
             L_TimeToBook.Text = "Bokningstid";
             // 
@@ -74,51 +75,46 @@
             CB_BookingTimes.DropDownStyle = ComboBoxStyle.DropDownList;
             CB_BookingTimes.FormattingEnabled = true;
             CB_BookingTimes.Items.AddRange(new object[] { "07:00 - 09:00", "09:00 - 11:00", "11:00 - 13:00", "13:00 - 15:00", "15:00 - 17:00", "17:00 - 19:00", "21:00 - 23:00" });
-            CB_BookingTimes.Location = new Point(169, 147);
-            CB_BookingTimes.Margin = new Padding(3, 2, 3, 2);
+            CB_BookingTimes.Location = new Point(193, 196);
             CB_BookingTimes.Name = "CB_BookingTimes";
-            CB_BookingTimes.Size = new Size(133, 23);
+            CB_BookingTimes.Size = new Size(151, 28);
             CB_BookingTimes.TabIndex = 3;
             // 
             // TB_UserName
             // 
-            TB_UserName.Location = new Point(169, 73);
-            TB_UserName.Margin = new Padding(3, 2, 3, 2);
+            TB_UserName.Location = new Point(193, 97);
             TB_UserName.Name = "TB_UserName";
-            TB_UserName.Size = new Size(133, 23);
+            TB_UserName.Size = new Size(151, 27);
             TB_UserName.TabIndex = 4;
             // 
             // TB_Password
             // 
-            TB_Password.Location = new Point(169, 98);
-            TB_Password.Margin = new Padding(3, 2, 3, 2);
+            TB_Password.Location = new Point(193, 131);
             TB_Password.Name = "TB_Password";
-            TB_Password.Size = new Size(133, 23);
+            TB_Password.Size = new Size(151, 27);
             TB_Password.TabIndex = 5;
             // 
             // DT_BookingDatePicker
             // 
-            DT_BookingDatePicker.Location = new Point(169, 122);
-            DT_BookingDatePicker.Margin = new Padding(3, 2, 3, 2);
+            DT_BookingDatePicker.Location = new Point(193, 163);
             DT_BookingDatePicker.Name = "DT_BookingDatePicker";
-            DT_BookingDatePicker.Size = new Size(219, 23);
+            DT_BookingDatePicker.Size = new Size(250, 27);
             DT_BookingDatePicker.TabIndex = 6;
             // 
             // L_Date
             // 
             L_Date.AutoSize = true;
-            L_Date.Location = new Point(97, 128);
+            L_Date.Location = new Point(111, 171);
             L_Date.Name = "L_Date";
-            L_Date.Size = new Size(43, 15);
+            L_Date.Size = new Size(54, 20);
             L_Date.TabIndex = 7;
             L_Date.Text = "Datum";
             // 
             // BT_Book
             // 
-            BT_Book.Location = new Point(169, 230);
-            BT_Book.Margin = new Padding(3, 2, 3, 2);
+            BT_Book.Location = new Point(193, 307);
             BT_Book.Name = "BT_Book";
-            BT_Book.Size = new Size(148, 85);
+            BT_Book.Size = new Size(169, 113);
             BT_Book.TabIndex = 8;
             BT_Book.Text = "Book";
             BT_Book.UseVisualStyleBackColor = true;
@@ -129,11 +125,22 @@
             Timer_PollingIntervall.Interval = 600000;
             Timer_PollingIntervall.Tick += Timer_PollingIntervall_Tick;
             // 
+            // BT_EmailSettings
+            // 
+            BT_EmailSettings.Location = new Point(193, 230);
+            BT_EmailSettings.Name = "BT_EmailSettings";
+            BT_EmailSettings.Size = new Size(151, 34);
+            BT_EmailSettings.TabIndex = 9;
+            BT_EmailSettings.Text = "Email Settings";
+            BT_EmailSettings.UseVisualStyleBackColor = true;
+            BT_EmailSettings.Click += BT_EmailSettings_Click;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(553, 397);
+            ClientSize = new Size(632, 529);
+            Controls.Add(BT_EmailSettings);
             Controls.Add(BT_Book);
             Controls.Add(L_Date);
             Controls.Add(DT_BookingDatePicker);
@@ -145,7 +152,6 @@
             Controls.Add(L_UserName);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "Form1";
             Text = "Tanto Bastu AutoBokare";
@@ -166,5 +172,6 @@
         private Label L_Date;
         private Button BT_Book;
         private System.Windows.Forms.Timer Timer_PollingIntervall;
+        private Button BT_EmailSettings;
     }
 }
