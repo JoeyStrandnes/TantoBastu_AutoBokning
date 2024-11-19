@@ -46,7 +46,6 @@
             NUM_AdditionalBooking = new NumericUpDown();
             CB_RetryBooking = new CheckBox();
             GB_Settings = new GroupBox();
-            TB_Console = new TextBox();
             ((System.ComponentModel.ISupportInitialize)NUM_AdditionalBooking).BeginInit();
             GB_Settings.SuspendLayout();
             SuspendLayout();
@@ -101,6 +100,7 @@
             TB_Password.Name = "TB_Password";
             TB_Password.Size = new Size(151, 27);
             TB_Password.TabIndex = 5;
+            TB_Password.UseSystemPasswordChar = true;
             // 
             // DT_BookingDatePicker
             // 
@@ -202,21 +202,11 @@
             GB_Settings.TabStop = false;
             GB_Settings.Text = "Inställningar";
             // 
-            // TB_Console
-            // 
-            TB_Console.Location = new Point(471, 24);
-            TB_Console.Multiline = true;
-            TB_Console.Name = "TB_Console";
-            TB_Console.ReadOnly = true;
-            TB_Console.Size = new Size(286, 423);
-            TB_Console.TabIndex = 15;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(769, 457);
-            Controls.Add(TB_Console);
+            ClientSize = new Size(479, 457);
             Controls.Add(GB_Settings);
             Controls.Add(BT_Book);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -229,7 +219,6 @@
             GB_Settings.ResumeLayout(false);
             GB_Settings.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -250,6 +239,5 @@
         private NumericUpDown NUM_AdditionalBooking;
         private CheckBox CB_RetryBooking;
         private GroupBox GB_Settings;
-        private TextBox TB_Console;
     }
 }

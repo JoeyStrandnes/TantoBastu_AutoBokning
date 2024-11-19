@@ -100,6 +100,7 @@
             TB_ServerEmailPassword.Name = "TB_ServerEmailPassword";
             TB_ServerEmailPassword.Size = new Size(213, 27);
             TB_ServerEmailPassword.TabIndex = 7;
+            TB_ServerEmailPassword.UseSystemPasswordChar = true;
             // 
             // L_EmailPassword
             // 

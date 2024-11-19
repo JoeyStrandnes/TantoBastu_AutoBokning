@@ -1,16 +1,10 @@
-using System;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-
-using MailKit;
 using MimeKit;
-using System.Net.Mail;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace TantoBastu_AutoBokning
@@ -37,7 +31,7 @@ namespace TantoBastu_AutoBokning
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            System.Windows.Forms.Application.Run(new MainForm());
         }
 
 
@@ -105,7 +99,6 @@ namespace TantoBastu_AutoBokning
 
                 return Program.ErrorCodes.WrongCredentials;
             }
-
 
             Program.BusyWaitForLoading(WebDriver, Wait); //Wait for the loading pop up to finish.
 
@@ -282,14 +275,16 @@ namespace TantoBastu_AutoBokning
 
                     if (Properties.Settings.Default.SendEmailAfterBooking == true)
                     {
-                        String EmailBody = "Värd: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text + "\n";
+                        String EmailBody = "Pass bokat:" + Environment.NewLine + date.ToString("d") + Environment.NewLine + "kl: " + booking_time + Environment.NewLine;
+
+                        EmailBody += "Värd: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text + Environment.NewLine;
 
                         var ListOfPeople = WebDriver.FindElements(OpenQA.Selenium.By.Id("gwt-debug-StackForm.headLine"));
 
                         foreach (var people in ListOfPeople)
                         {
                             System.Diagnostics.Debug.WriteLine(people.Text);
-                            EmailBody += people.Text + "\n";
+                            EmailBody += people.Text + Environment.NewLine;
                         }
 
                         //Send an email when the booking is complete with information of the booking.

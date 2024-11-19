@@ -1,8 +1,3 @@
-using System;
-using System.Text.RegularExpressions;
-using System.Threading;
-
-using TantoBastu_AutoBokning.Properties;
 
 namespace TantoBastu_AutoBokning
 {
@@ -99,5 +94,7 @@ namespace TantoBastu_AutoBokning
 
             return;
         }
+
+
     }
 }

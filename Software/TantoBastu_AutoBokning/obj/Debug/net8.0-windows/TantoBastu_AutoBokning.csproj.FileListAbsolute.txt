@@ -15,6 +15,7 @@ C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBa
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\bin\Debug\net8.0-windows\WebDriver.dll
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.csproj.AssemblyReference.cache
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.EmailForm.resources
+C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.MainForm.resources
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.csproj.GenerateResource.cache
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.AssemblyInfoInputs.cache
@@ -27,4 +28,3 @@ C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBa
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.pdb
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.genruntimeconfig.cache
 C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\ref\TantoBastu_AutoBokning.dll
-C:\Users\Joey.Strandnes\Documents\GitHub\TantoBastu_AutoBokning\Software\TantoBastu_AutoBokning\obj\Debug\net8.0-windows\TantoBastu_AutoBokning.MainForm.resources
