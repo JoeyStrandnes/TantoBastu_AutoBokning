@@ -44,7 +44,7 @@ namespace TantoBastu_AutoBokning
         public static void BusyWaitForLoading(IWebDriver web_driver, WebDriverWait wait)
         {
 
-            //Wait for the loading pop up to finish. Its slow and is fetchig the bookign information from the server.
+            //Wait for the loading pop up to finish. Its slow and is fetching the booking information from the server.
             IWebElement LoadingWheel = web_driver.FindElement(OpenQA.Selenium.By.ClassName("gwt-Image"));
             IWebElement Calendar = web_driver.FindElement(OpenQA.Selenium.By.ClassName("dayBoxBackPanel"));
 
@@ -115,10 +115,10 @@ namespace TantoBastu_AutoBokning
             WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-languageSelection")).Click();
             String BrowserLang = Regex.Replace(WebDriver.FindElement(OpenQA.Selenium.By.ClassName("dialogTopCenterInner")).Text, @"^.*? - ", "");
 
-            //The website is sometimes set to english for some reason. This breaks some elements since they use swedish text!
+            //The website is sometimes set to English for some reason. This breaks some elements since they use Swedish text!
             if (BrowserLang != "Svenska")
             {
-                //The entire page will relload if the langauge is changed....
+                //The entire page will reload if the language is changed....
                 WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-languageImage_sv")).Click();
 
                 //A bit of a pain, the waiting time and order of the popups changes every time. FIXME
@@ -141,7 +141,7 @@ namespace TantoBastu_AutoBokning
             System.Threading.Thread.CurrentThread.CurrentCulture = ThreadLang;
             System.Threading.Thread.CurrentThread.CurrentUICulture = ThreadLang;
 
-            //TODO Fetch the month name from the "date time picker" after the langauge has been set 
+            //TODO Fetch the month name from the "date time picker" after the language has been set 
             string SelectedMonth = date.ToString("MMMM").ToLower();
             int SelectedYear = date.Year;
             int MonthNumber = date.Month;
@@ -149,7 +149,7 @@ namespace TantoBastu_AutoBokning
             IWebElement MonthBanner = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-dateButton"));
             IWebElement NextMonthButton = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-nextButton"));
 
-            //Loop over all possible months. Assumes nobody is crazy enugh to book more than 12 months in advance.
+            //Loop over all possible months. Assumes nobody is crazy enough to book more than 12 months in advance.
             for (int i = 0; i < 12; i++)
             {
 
@@ -177,7 +177,7 @@ namespace TantoBastu_AutoBokning
 
                 if (NumberOfExtraBookings > 0) //ie book a spot for your friends.
                 {
-                    NumberOfExtraBookings--; //This is becuase the "non hosting" routine books a normal time in addition to the extra bookings.
+                    NumberOfExtraBookings--; //This is because the "non hosting" routine books a normal time in addition to the extra bookings.
                     Program.BusyWaitForLoading(WebDriver, Wait);
                 }
                 else
@@ -248,7 +248,7 @@ namespace TantoBastu_AutoBokning
 
                     Program.BusyWaitForLoading(WebDriver, Wait);
 
-                    //Read the text from the pop up to check if the booking was successfull!
+                    //Read the text from the pop up to check if the booking was successful!
                     IWebElement ConfirmationPopUp = WebDriver.FindElement(OpenQA.Selenium.By.ClassName("gwt-DialogBox"));
                     Wait.Until(d => ConfirmationPopUp.Displayed); //Wait for it to show.
 
