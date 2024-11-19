@@ -18,9 +18,6 @@ namespace TantoBastu_AutoBokning
     internal static class Program
     {
 
-
-        public static String UserName = string.Empty;
-        public static String Password = string.Empty;
         public static int NumberOfExtraBookings = 0;
 
         public enum ErrorCodes
@@ -176,7 +173,53 @@ namespace TantoBastu_AutoBokning
             //Check if someone is booked as the host.
             IWebElement Host = WebDriver.FindElement(OpenQA.Selenium.By.XPath($"//div[starts-with(@id, 'gwt-debug-passText2_') and text()='{booking_time}']"));
 
-            if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Otillgänglig"))
+            if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Ledig") && Properties.Settings.Default.HostSession == true)
+            {
+                Host.Click(); //Book the session as the host.
+
+                if (NumberOfExtraBookings > 0) //ie book a spot for your friends.
+                {
+                    NumberOfExtraBookings--; //This is becuase the "non hosting" routine books a normal time in addition to the extra bookings.
+                    Program.BusyWaitForLoading(WebDriver, Wait);
+                }
+                else
+                {
+
+                    if (Properties.Settings.Default.SendEmailAfterBooking == true)
+                    {
+
+                        MimeMessage Email = new MimeMessage();
+                        Email.From.Add(new MailboxAddress("BastuBokaren", Properties.Settings.Default.ServerEmail));
+
+                        Email.To.Add(new MailboxAddress("", Properties.Settings.Default.Email));
+                        Email.Subject = "Bastun är bokad";
+                        Email.Body = new TextPart("plain")
+                        {
+                            Text = "Du är värd för pass:" + Environment.NewLine + date.ToString("d") + Environment.NewLine + "kl: " + booking_time
+                        };
+
+                        using (MailKit.Net.Smtp.SmtpClient SMTP = new MailKit.Net.Smtp.SmtpClient())
+                        {
+                            SMTP.Connect(Properties.Settings.Default.ServerAddress, Properties.Settings.Default.ServerPort, true);
+                            SMTP.Authenticate(Properties.Settings.Default.ServerEmail, Properties.Settings.Default.ServerEmailPassword);
+                            SMTP.Send(Email);
+                            SMTP.Disconnect(true);
+                        }
+
+
+
+                    }
+
+
+                    WebDriver.Quit();
+                    return Program.ErrorCodes.BookingSucceeded;
+
+                }
+
+
+            }
+
+            if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Otillgänglig") || Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Bokad av mig"))
             {
                 System.Diagnostics.Debug.WriteLine("Booked by: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text);
 
@@ -225,7 +268,14 @@ namespace TantoBastu_AutoBokning
                         WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-bookAnotherResourceButton")).Click();
                         Program.BusyWaitForLoading(WebDriver, Wait);
 
-                        ConfirmationPopUp.FindElement(OpenQA.Selenium.By.TagName("button")).Click(); //Close the pop up
+                        try //FIXME Not finding the button some times
+                        {
+                            ConfirmationPopUp.FindElement(OpenQA.Selenium.By.TagName("button")).Click(); //Close the pop up
+                        }
+                        catch
+                        {
+                            ConfirmationPopUp.FindElement(OpenQA.Selenium.By.ClassName("gwt-Button standardButton")).Click();
+                        }
                         RegularTime.Click();
 
                         NumberOfExtraBookings--;
@@ -244,11 +294,11 @@ namespace TantoBastu_AutoBokning
                             EmailBody += people.Text + "\n";
                         }
 
-                        //Todo send an email when the booking is complete with information of the booking.
+                        //Send an email when the booking is complete with information of the booking.
                         MimeMessage Email = new MimeMessage();
                         Email.From.Add(new MailboxAddress("BastuBokaren", Properties.Settings.Default.ServerEmail));
 
-                        String[] UserNameSplit = Program.UserName.Split('.');
+                        String[] UserNameSplit = Properties.Settings.Default.Username.Split('.');
                         String Name = char.ToUpper(UserNameSplit[0][0]) + UserNameSplit[0].Substring(1) + char.ToUpper(UserNameSplit[1][0]) + UserNameSplit[1].Substring(1);
 
                         Email.To.Add(new MailboxAddress(Name, Properties.Settings.Default.Email));

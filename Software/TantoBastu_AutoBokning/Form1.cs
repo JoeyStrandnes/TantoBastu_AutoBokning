@@ -19,34 +19,43 @@ namespace TantoBastu_AutoBokning
             TB_Password.Text = Properties.Settings.Default.Password;
             CB_BookingTimes.SelectedIndex = Properties.Settings.Default.SelectedTimeIndex;
 
+            CB_RetryBooking.Checked = Properties.Settings.Default.RetryBooking;
+            CB_HostSession.Checked = Properties.Settings.Default.HostSession;
+
         }
 
         private void BT_Book_Click(object sender, EventArgs e)
         {
 
-            //Load the user input and store it to the NVM.
-            Program.UserName = TB_UserName.Text;
-            Program.Password = TB_Password.Text;
+            GB_Settings.Enabled = false;
 
-            Properties.Settings.Default.Username = Program.UserName;
-            Properties.Settings.Default.Password = Program.Password;
+            //Load the user input and store it to the NVM.
+            Properties.Settings.Default.Username = TB_UserName.Text;
+            Properties.Settings.Default.Password = TB_Password.Text;
             Properties.Settings.Default.SelectedTimeIndex = CB_BookingTimes.SelectedIndex;
+
+            Properties.Settings.Default.RetryBooking = CB_RetryBooking.Checked;
+            Properties.Settings.Default.HostSession = CB_HostSession.Checked;
 
             Properties.Settings.Default.Save();
 
+            Program.NumberOfExtraBookings = (Int32)NUM_AdditionalBooking.Value; //Limited to 3.
+
             Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value, CB_BookingTimes.SelectedItem.ToString());
-            //Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value.ToString("dd"), CB_BookingTimes.SelectedItem.ToString());
 
             switch (BookingStatus)
             {
-                case (Program.ErrorCodes.WrongCredentials):
-                    Timer_PollingIntervall.Stop();
-                    break;
+                
                 case (Program.ErrorCodes.BookingFull):
-                    Timer_PollingIntervall.Start();
+                    if (Properties.Settings.Default.RetryBooking == true)
+                    {
+                        Timer_PollingIntervall.Start();
+                    }
                     break;
-                case (Program.ErrorCodes.BookingSucceeded):
+            case (Program.ErrorCodes.WrongCredentials):
+            case (Program.ErrorCodes.BookingSucceeded):
                     Timer_PollingIntervall.Stop();
+                    GB_Settings.Enabled = true;
                     break;
 
 
@@ -63,14 +72,16 @@ namespace TantoBastu_AutoBokning
 
             switch (BookingStatus)
             {
-                case (Program.ErrorCodes.WrongCredentials):
-                    Timer_PollingIntervall.Stop();
-                    break;
                 case (Program.ErrorCodes.BookingFull):
-                    Timer_PollingIntervall.Start();
+                    if (Properties.Settings.Default.RetryBooking == true)
+                    {
+                        Timer_PollingIntervall.Start();
+                    }
                     break;
+                case (Program.ErrorCodes.WrongCredentials):
                 case (Program.ErrorCodes.BookingSucceeded):
                     Timer_PollingIntervall.Stop();
+                    GB_Settings.Enabled = true;
                     break;
 
 

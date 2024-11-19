@@ -130,5 +130,29 @@ namespace TantoBastu_AutoBokning.Properties {
                 this["SendEmailAfterBooking"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HostSession {
+            get {
+                return ((bool)(this["HostSession"]));
+            }
+            set {
+                this["HostSession"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RetryBooking {
+            get {
+                return ((bool)(this["RetryBooking"]));
+            }
+            set {
+                this["RetryBooking"] = value;
+            }
+        }
     }
 }
