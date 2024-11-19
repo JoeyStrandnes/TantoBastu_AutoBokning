@@ -1,6 +1,6 @@
 ﻿namespace TantoBastu_AutoBokning
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             L_UserName = new Label();
             L_Password = new Label();
             L_TimeToBook = new Label();
@@ -46,6 +46,7 @@
             NUM_AdditionalBooking = new NumericUpDown();
             CB_RetryBooking = new CheckBox();
             GB_Settings = new GroupBox();
+            TB_Console = new TextBox();
             ((System.ComponentModel.ISupportInitialize)NUM_AdditionalBooking).BeginInit();
             GB_Settings.SuspendLayout();
             SuspendLayout();
@@ -174,9 +175,9 @@
             CB_RetryBooking.AutoSize = true;
             CB_RetryBooking.Location = new Point(158, 234);
             CB_RetryBooking.Name = "CB_RetryBooking";
-            CB_RetryBooking.Size = new Size(179, 24);
+            CB_RetryBooking.Size = new Size(124, 24);
             CB_RetryBooking.TabIndex = 13;
-            CB_RetryBooking.Text = "Retry if booking failed";
+            CB_RetryBooking.Text = "Auto-omboka";
             CB_RetryBooking.UseVisualStyleBackColor = true;
             // 
             // GB_Settings
@@ -201,23 +202,34 @@
             GB_Settings.TabStop = false;
             GB_Settings.Text = "Inställningar";
             // 
-            // Form1
+            // TB_Console
+            // 
+            TB_Console.Location = new Point(471, 24);
+            TB_Console.Multiline = true;
+            TB_Console.Name = "TB_Console";
+            TB_Console.ReadOnly = true;
+            TB_Console.Size = new Size(286, 423);
+            TB_Console.TabIndex = 15;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 457);
+            ClientSize = new Size(769, 457);
+            Controls.Add(TB_Console);
             Controls.Add(GB_Settings);
             Controls.Add(BT_Book);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Tanto Bastu AutoBokare";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)NUM_AdditionalBooking).EndInit();
             GB_Settings.ResumeLayout(false);
             GB_Settings.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -238,5 +250,6 @@
         private NumericUpDown NUM_AdditionalBooking;
         private CheckBox CB_RetryBooking;
         private GroupBox GB_Settings;
+        private TextBox TB_Console;
     }
 }

@@ -37,7 +37,7 @@ namespace TantoBastu_AutoBokning
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
 
 
@@ -114,34 +114,32 @@ namespace TantoBastu_AutoBokning
             //This is used for the month selector since it is only searchable by the month name!
             WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-languageSelection")).Click();
             String BrowserLang = Regex.Replace(WebDriver.FindElement(OpenQA.Selenium.By.ClassName("dialogTopCenterInner")).Text, @"^.*? - ", "");
-            WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton")).Click();
 
-            System.Globalization.CultureInfo ThreadLang;
-
-            switch (BrowserLang)
+            //The website is sometimes set to english for some reason. This breaks some elements since they use swedish text!
+            if (BrowserLang != "Svenska")
             {
-                case ("English"):
-                    ThreadLang = new System.Globalization.CultureInfo("es-ES");
-                    break;
-                case ("Svenska"):
-                    ThreadLang = new System.Globalization.CultureInfo("sv-SV");
-                    break;
-                case ("Norks"):
-                    ThreadLang = new System.Globalization.CultureInfo("nn-NN");
-                    break;
-                case ("Danks"):
-                    ThreadLang = new System.Globalization.CultureInfo("da-DA");
-                    break;
-                default:
-                    ThreadLang = new System.Globalization.CultureInfo("sv-SV");
-                    break;
+                //The entire page will relload if the langauge is changed....
+                WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-languageImage_sv")).Click();
 
+                //A bit of a pain, the waiting time and order of the popups changes every time. FIXME
+                System.Threading.Thread.Sleep(500);
+
+                Program.BusyWaitForLoading(WebDriver, Wait); //Wait for the loading pop up to finish.
+
+                IWebElement MessageButton = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton"));
+                Wait.Until(d => MessageButton.Displayed);
+                MessageButton.Click(); //Close the messages pop up.
 
             }
+            else //Swedish so just close the popup
+            {
+                WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton")).Click();
+            }
+
+            System.Globalization.CultureInfo ThreadLang = new System.Globalization.CultureInfo("sv-SV");
 
             System.Threading.Thread.CurrentThread.CurrentCulture = ThreadLang;
             System.Threading.Thread.CurrentThread.CurrentUICulture = ThreadLang;
-
 
             //TODO Fetch the month name from the "date time picker" after the langauge has been set 
             string SelectedMonth = date.ToString("MMMM").ToLower();
