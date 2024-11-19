@@ -58,8 +58,11 @@ namespace TantoBastu_AutoBokning
             return;
         }
 
-        public static Program.ErrorCodes BookSaunaTime(string day, string booking_time) //Return error code:
+        public static Program.ErrorCodes BookSaunaTime(DateTime date, string booking_time) //Return error code:
         {
+
+#if !DEBUG
+
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("--headless");
             chromeOptions.AddArgument("--start-minimized");
@@ -70,6 +73,11 @@ namespace TantoBastu_AutoBokning
             DriverService.HideCommandPromptWindow = true;
 
             IWebDriver WebDriver = new OpenQA.Selenium.Chrome.ChromeDriver(DriverService, chromeOptions);
+            
+#else
+            IWebDriver WebDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
+#endif
+
             WebDriverWait Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(60));
 
             WebDriver.Navigate().GoToUrl("http://tbas.lasborgen.se:8000/");
@@ -139,11 +147,30 @@ namespace TantoBastu_AutoBokning
 
 
             //TODO Fetch the month name from the "date time picker" after the langauge has been set 
+            string SelectedMonth = date.ToString("MMMM").ToLower();
+            int SelectedYear = date.Year;
+            int MonthNumber = date.Month;
 
+            IWebElement MonthBanner = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-dateButton"));
+            IWebElement NextMonthButton = WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-nextButton"));
+
+            //Loop over all possible months. Assumes nobody is crazy enugh to book more than 12 months in advance.
+            for (int i = 0; i < 12; i++)
+            {
+
+                if (MonthBanner.Text.Contains(SelectedMonth) == true)
+                {
+                    break;
+                }
+
+                NextMonthButton.Click();
+                Program.BusyWaitForLoading(WebDriver, Wait);
+
+            }
 
 
             //Select the day to book.
-            WebDriver.FindElement(OpenQA.Selenium.By.Id($"gwt-debug-dayBoxButton{day}")).Click(); //Click on the day to book.
+            WebDriver.FindElement(OpenQA.Selenium.By.Id($"gwt-debug-dayBoxButton{date.ToString("dd")}")).Click(); //Click on the day to book.
             Program.BusyWaitForLoading(WebDriver, Wait);
 
             //Check if someone is booked as the host.

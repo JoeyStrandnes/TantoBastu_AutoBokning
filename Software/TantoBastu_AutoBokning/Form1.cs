@@ -34,7 +34,8 @@ namespace TantoBastu_AutoBokning
 
             Properties.Settings.Default.Save();
 
-            Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value.ToString("dd"), CB_BookingTimes.SelectedItem.ToString());
+            Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value, CB_BookingTimes.SelectedItem.ToString());
+            //Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value.ToString("dd"), CB_BookingTimes.SelectedItem.ToString());
 
             switch (BookingStatus)
             {
@@ -58,7 +59,7 @@ namespace TantoBastu_AutoBokning
         private void Timer_PollingIntervall_Tick(object sender, EventArgs e)
         {
 
-            Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value.ToString("dd"), CB_BookingTimes.SelectedItem.ToString());
+            Program.ErrorCodes BookingStatus = Program.BookSaunaTime(DT_BookingDatePicker.Value, CB_BookingTimes.SelectedItem.ToString());
 
             switch (BookingStatus)
             {
