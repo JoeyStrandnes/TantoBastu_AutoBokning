@@ -224,7 +224,17 @@ namespace TantoBastu_AutoBokning
                 int NumberOfBookings = 0;
                 try
                 {
-                    NumberOfBookings = Int32.Parse(Regex.Match(RegularTime.FindElement(OpenQA.Selenium.By.TagName("i")).Text, @"\d+").Value); //Get the number of bookings.
+                    string TempString = Regex.Match(RegularTime.FindElement(OpenQA.Selenium.By.TagName("i")).Text, @"\d+").Value; //Get the number of bookings.
+
+                    if (string.IsNullOrEmpty(TempString)) //If only the host has booked it, the number of bookings is the name of the host. Not a number!
+                    {
+                        NumberOfBookings = 0;
+                    }
+                    else
+                    {
+                        NumberOfBookings = Int32.Parse(TempString);
+                    }
+
                 }
                 catch (NoSuchElementException)
                 {
