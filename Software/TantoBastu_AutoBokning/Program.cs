@@ -56,6 +56,8 @@ namespace TantoBastu_AutoBokning
 #if !DEBUG
 
             ChromeOptions chromeOptions = new ChromeOptions();
+            //chromeOptions.AddArgument("--lang=sv-SE");
+            //chromeOptions.AddArgument("--lang=en_GB");
             chromeOptions.AddArgument("--headless");
             chromeOptions.AddArgument("--start-minimized");
             //chromeOptions.AddArgument("--window-position=-2400,-2400"); //Chrome verison is bugged.
@@ -72,7 +74,7 @@ namespace TantoBastu_AutoBokning
 
             WebDriverWait Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(60));
 
-            WebDriver.Navigate().GoToUrl("http://tbas.lasborgen.se:8000/");
+            WebDriver.Navigate().GoToUrl("http://tbas.lasborgen.se:8000/?locale=en_GB");
 
             System.Threading.Thread.Sleep(500);
 
@@ -127,7 +129,16 @@ namespace TantoBastu_AutoBokning
             }
             else //Swedish so just close the popup
             {
-                WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton")).Click();
+                try
+                {
+                    WebDriver.FindElement(OpenQA.Selenium.By.Id("gwt-debug-closeButton")).Click();
+                }
+                catch
+                {
+                    WebDriver.Quit();
+                    return Program.ErrorCodes.BookingFull; //FIXME
+                }
+                
             }
 
             System.Globalization.CultureInfo ThreadLang = new System.Globalization.CultureInfo("sv-SV");
@@ -159,13 +170,15 @@ namespace TantoBastu_AutoBokning
 
 
             //Select the day to book.
-            WebDriver.FindElement(OpenQA.Selenium.By.Id($"gwt-debug-dayBoxButton{date.ToString("dd")}")).Click(); //Click on the day to book.
+            WebDriver.FindElement(OpenQA.Selenium.By.Id($"gwt-debug-dayBoxButton{date.Day}")).Click(); //Click on the day to book.
             Program.BusyWaitForLoading(WebDriver, Wait);
 
             //Check if someone is booked as the host.
             IWebElement Host = WebDriver.FindElement(OpenQA.Selenium.By.XPath($"//div[starts-with(@id, 'gwt-debug-passText2_') and text()='{booking_time}']"));
+            string HostStatus = (Host.FindElement(OpenQA.Selenium.By.XPath(".."))).GetAttribute("class");
 
-            if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Ledig") && Properties.Settings.Default.HostSession == true)
+            //if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Ledig") && Properties.Settings.Default.HostSession == true)
+            if ((HostStatus.Split(' ').Contains("calMonthDayBodyBookedByAnother") && Properties.Settings.Default.HostSession == true))
             {
                 Host.Click(); //Book the session as the host.
 
@@ -211,7 +224,8 @@ namespace TantoBastu_AutoBokning
 
             }
 
-            if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Otillgänglig") || Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Bokad av mig"))
+            //if (Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Otillgänglig") || Host.FindElement(OpenQA.Selenium.By.XPath("..")).Text.Contains("Bokad av mig"))
+            if ((HostStatus.Split(' ').Contains("calMonthDayBodyBookedByAnother") || (HostStatus.Split(' ').Contains("calMonthDayBodyBookedByMe"))))
             {
                 System.Diagnostics.Debug.WriteLine("Booked by: " + Host.FindElement(OpenQA.Selenium.By.TagName("i")).Text);
 
